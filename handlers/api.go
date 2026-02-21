@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 	"todoApp/database"
@@ -47,6 +48,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// send a response
+	fmt.Println("User created successfully")
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{"message": "User created successfully",})
@@ -89,7 +91,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// send a response
-	w.Header().Set("Content-Type", "application/json")
+	fmt.Println("Login successfully")
 	w.WriteHeader(200)
 	json.NewEncoder(w).Encode(token)
 }
@@ -120,6 +122,7 @@ func CreateTodo(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//send request response
+	fmt.Println("Todo created successfully")
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Todo created successfully",})
@@ -143,6 +146,7 @@ func GetAllTodos(w http.ResponseWriter, r *http.Request) {
         return
     }
 	//Send response
+	fmt.Println("Todo generated successfully")
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
     json.NewEncoder(w).Encode(todos)
@@ -197,6 +201,7 @@ func UpdateTodo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println("Todo updated successfully")
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Todo updated successfully",})
@@ -237,6 +242,7 @@ func DeleteTodo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println("Todo deleted successfully")
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Todo deleted successfully",})
